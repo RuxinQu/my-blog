@@ -1,0 +1,27 @@
+[
+    {
+        "username" : "xiaobai",
+        "email" : "xiaobai@test.com",
+        "password": "helloxiaobai"
+    },
+    {
+        "username" : "daHuang",
+        "email" : "dahuang@test.com",
+        "password": "dahuangisadog"
+    },
+    {
+        "username" : "adam",
+        "email" : "adamdy@test.com",
+        "password": "this%isadam%"
+    },
+    {
+        "username" : "ruxinqu",
+        "email" : "ruxinqu@test.com",
+        "password": "i'mruxin"
+    },
+    {
+        "username" : "happyLife",
+        "email" : "lisaWang@test.com",
+        "password": "lisaWangds"
+    }
+]

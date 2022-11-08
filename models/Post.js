@@ -23,14 +23,14 @@ Post.init(
             type: DataTypes.INTEGER,
             references: {
                 model: 'user',
-                key: id
+                key: 'id'
             }
         },
         comment_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'comment',
-                key: id
+                key: 'id'
             }
         }
     },
