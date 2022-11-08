@@ -3,12 +3,13 @@ const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
 
 class User extends Model {
-    async matchPassword(userData) {
+    async checkPassword(userData) {
         try {
-            return await bcrypt.compare(userData.password, this.password);
+            const matchPassword = await bcrypt.compare(userData.password, this.password);
+            return matchPassword;
         } catch (err) { console.log(err) }
     }
-};
+}
 
 User.init(
     {
@@ -21,7 +22,10 @@ User.init(
         username: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
+            unique: true,
+            validate: {
+                isAlphanumeric: true
+            }
         },
         email: {
             type: DataTypes.STRING,
@@ -33,28 +37,25 @@ User.init(
         password: {
             type: DataTypes.STRING(64),
             validate: {
-                is: /^[0-9a-f]{64}$/i
+                len: [8]
             }
         }
     },
     {
         hooks: {
             beforeCreate: async (userData) => {
-                const salt = bcrypt.genSalt(10);
-                const hashedPassword = bcrypt.hash(userData.password, salt);
+                const salt = await bcrypt.genSalt(10);
+                const hashedPassword = await bcrypt.hash(userData.password, salt);
                 userData.password = hashedPassword;
             },
             beforeUpdate: async (userData) => {
-                const salt = bcrypt.genSalt(10);
-                const hashedPassword = bcrypt.hash(userData.password, salt);
+                const salt = await bcrypt.genSalt(10);
+                const hashedPassword = await bcrypt.hash(userData.password, salt);
                 userData.password = hashedPassword;
             }
-        }
-    },
-    {
+        },
         sequelize,
         freezeTableName: true,
-        timestamps: false,
         modelName: 'user',
     }
 )
