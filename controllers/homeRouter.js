@@ -6,9 +6,7 @@ homeRouter.get('/', async (req, res) => {
     const post = await Post.findAll(
         {
             attributes: {
-                include: [
-                    [sequelize.fn('date_format', sequelize.col('createdAt'), '%m-%d-%Y'), 'posttime']
-                ],
+                include: [[sequelize.fn('date_format', sequelize.col('createdAt'), '%m-%d-%Y'), 'posttime']],
             },
             include: { model: User }
         })

@@ -1,39 +1,51 @@
-:root{
+:root {
     --bg-banner: #283618;
     --border: #588157;
+    --title: #000;
+    --bg-loginform: #a3b18a;
 }
 
-html{
+html {
     font-size: 16px;
 }
 
-h4{
-    font-size: 1.5rem;
-}
-
-p{
+p {
     font-size: 1.1rem;
 }
 
-h4,p{
+h4,
+p {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
-.banner{
+/* -----------------banner styling----------------- */
+.banner {
     font-size: 1.5rem;
     background-color: var(--bg-banner);
 }
 
-.logo{
+.logo {
     height: 5rem;
 }
 
-.post{
+/* -----------------homepage post styling----------------- */
+.post {
     border: 3px solid var(--border);
 }
 
-.post-owner{
-    font-size: 0.8rem;
+.post a {
+    font-size: 1.5rem;
+    color: var(--title);
+}
+
+.post-owner {
+    font-size: 1rem;
     padding-left: 1rem;
+}
+
+/*  -----------------login page styling ----------------- */
+.login-container {
+    background-color: var(--bg-banner);
+    color: #fff;
 }
