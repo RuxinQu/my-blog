@@ -1,0 +1,39 @@
+:root{
+    --bg-banner: #283618;
+    --border: #588157;
+}
+
+html{
+    font-size: 16px;
+}
+
+h4{
+    font-size: 1.5rem;
+}
+
+p{
+    font-size: 1.1rem;
+}
+
+h4,p{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.banner{
+    font-size: 1.5rem;
+    background-color: var(--bg-banner);
+}
+
+.logo{
+    height: 5rem;
+}
+
+.post{
+    border: 3px solid var(--border);
+}
+
+.post-owner{
+    font-size: 0.8rem;
+    padding-left: 1rem;
+}
