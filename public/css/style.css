@@ -32,3 +32,8 @@ h4,p{
 .post{
     border: 3px solid var(--border);
 }
+
+.post-owner{
+    font-size: 0.8rem;
+    padding-left: 1rem;
+}
