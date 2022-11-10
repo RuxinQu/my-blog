@@ -11,12 +11,7 @@ html {
 
 p {
     font-size: 1.1rem;
-}
-
-h4,
-p {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
 }
 
 /* -----------------banner styling----------------- */
@@ -32,14 +27,15 @@ p {
 /* -----------------homepage post styling----------------- */
 .post {
     border: 3px solid var(--border);
+    padding: 1rem;
 }
 
-.post a {
+.title {
     font-size: 1.5rem;
     color: var(--title);
 }
 
-.post-owner {
+.owner {
     font-size: 1rem;
     padding-left: 1rem;
 }

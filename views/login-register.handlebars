@@ -1,19 +1,31 @@
 <div class="container-fluid mt-5">
-    <div class="row d-flex justify-content-center">
+    <div class="row d-flex flex-column justify-content-center align-items-center">
+        {{#if login}}
+        <h1 class="text-center">Login</h1>
+        {{else}}
+        <h1 class="text-center">Sign Up</h1>
+        {{/if}}
         <form class="col-5 login-container p-4 mt-5 rounded">
             <div class="form-group">
-                <label for="email">Email address: </label>
+                <label for="email">Email: </label>
                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
             </div>
+            {{#if register}}
             <div class="form-group">
                 <label for="username">Username: </label>
                 <input type="text" class="form-control" id="username">
             </div>
+            {{/if}}
             <div class="form-group">
                 <label for="password">Password: </label>
                 <input type="password" class="form-control" id="password">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
+            {{#if login}}
+            <a class="ml-2 font-weight-bold" href="/user/register">Sign up</a>
+            {{else}}
+            <a class="ml-2 font-weight-bold" href="/user/login">Login</a>
+            {{/if}}
         </form>
     </div>
 </div>
