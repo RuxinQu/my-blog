@@ -1,20 +1,28 @@
 const homeRouter = require('express').Router();
-const sequelize = require('../config/connection')
-const { Post, User, Comment } = require('../models/index');
+const sequelize = require('../config/connection');
+const { Post, User } = require('../models/index');
+// const registerRouter = require('./user/register');
 
 homeRouter.get('/', async (req, res) => {
-    const post = await Post.findAll(
+    const postData = await Post.findAll(
         {
             attributes: {
-                include: [
-                    [sequelize.fn('date_format', sequelize.col('createdAt'), '%m-%d-%Y'), 'posttime']
-                ],
+                include: [[sequelize.fn('date_format', sequelize.col('createdAt'), '%m-%d-%Y'), 'posttime']],
             },
             include: { model: User }
-        })
-    const postArr = post.map((post) => post.get({ plain: true }));
+        });
+    const postArr = postData.map((post) => post.get({ plain: true }));
+    res.render('home', { postArr, login: req.session.login });
+});
 
-    res.render('home', { postArr });
-})
+function ensureAuthentication(req, res, next) {
+    // Complete the if statmenet below:
+    if (req.session.authenticated) {
+        return next();
+    } else {
+        res.status(403).json({ msg: 'You\'re not authorized to view this page' });
+    }
+}
+
 
 module.exports = homeRouter;

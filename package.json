@@ -2,8 +2,9 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
-    "chalk": "^5.1.2",
+    "chalk": "^4.1.2",
     "connect-session-sequelize": "^7.1.5",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",
     "errorhandler": "^1.5.1",
     "express": "^4.18.2",
@@ -11,6 +12,8 @@
     "express-session": "^1.17.3",
     "morgan": "^1.10.0",
     "mysql2": "^2.3.3",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
     "sequelize": "^6.25.5"
   },
   "scripts": {
@@ -20,7 +23,6 @@
   "name": "yard-bazaar",
   "version": "1.0.0",
   "main": "server.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RuxinQu/yard-bazaar.git"
@@ -32,5 +34,8 @@
     "url": "https://github.com/RuxinQu/yard-bazaar/issues"
   },
   "homepage": "https://github.com/RuxinQu/yard-bazaar#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "eslint": "^8.27.0"
+  }
 }

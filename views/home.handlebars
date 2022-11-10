@@ -1,8 +1,10 @@
+<div class="container-fluid post-container mt-5">
 {{#each postArr}}
     <div class="row d-flex justify-content-center">
         <div class="col-10 post rounded my-4">
-            <h4>{{this.title}}<span class="post-owner">by {{this.user.username}} on {{this.posttime}}</span></h4>
+            <a class="title" href="/comment">{{this.title}}</a><span class="owner">by {{this.user.username}} on {{this.posttime}}</span>
             <p>{{this.content}}</p>
         </div>
     </div>
 {{/each}}
+</div>
