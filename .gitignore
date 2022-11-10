@@ -3,3 +3,4 @@ package-lock.json
 .vscode
 .env
 .DS_Store
+.eslintrc.json

@@ -1,7 +1,9 @@
+/* eslint-disable no-undef */
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
+const passport = require('passport');
 
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -17,8 +19,8 @@ const PORT = process.env.PORT || 4001;
 
 app.use(
     session({
-        secret: "dahuang",
-        cookie: { maxAge: 172800000, secure: true, sameSite: "none" },
+        secret: 'dahuang',
+        cookie: { maxAge: 172800000, secure: true, sameSite: 'none' },
         resave: false,
         saveUninitialized: false,
         store: new SequelizeStore({
@@ -30,16 +32,19 @@ app.use(
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(errorHandler());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/public'));
 
-app.use(routes)
+app.use(express.static(__dirname + '/public'));
+app.use(routes);
 
 const start = async () => {
     await sequelize.sync();
     app.listen(PORT, () => console.log(`server is listening to port ${PORT}`));
-}
+};
 
 start();

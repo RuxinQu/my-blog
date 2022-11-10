@@ -2,8 +2,8 @@ const registerRouter = require('express').Router();
 const User = require('../../models/User');
 
 registerRouter.get('/', (req, res) => {
-    res.render('login-register', { register: true });
-})
+    res.render('register');
+});
 
 registerRouter.post('/', async (req, res) => {
     try {
@@ -11,8 +11,8 @@ registerRouter.post('/', async (req, res) => {
         newUser
             ? res.status(201).send(newUser)
             : res.status(400).send();
-    } catch (err) { res.status(500).send(err) }
-})
+    } catch (err) { res.status(500).send(err); }
+});
 
 module.exports = registerRouter;
 

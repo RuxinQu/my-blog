@@ -1,6 +1,7 @@
 const homeRouter = require('express').Router();
-const sequelize = require('../config/connection')
+const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models/index');
+const registerRouter = require('./user/register');
 
 homeRouter.get('/', async (req, res) => {
     const postData = await Post.findAll(
@@ -9,10 +10,10 @@ homeRouter.get('/', async (req, res) => {
                 include: [[sequelize.fn('date_format', sequelize.col('createdAt'), '%m-%d-%Y'), 'posttime']],
             },
             include: { model: User }
-        })
+        });
     const postArr = postData.map((post) => post.get({ plain: true }));
+    res.render('home', { postArr, login: req.session.login});
+});
 
-    res.render('home', { postArr });
-})
 
 module.exports = homeRouter;
