@@ -8,19 +8,19 @@
         <form class="col-5 login-container p-4 mt-5 rounded">
             <div class="form-group">
                 <label for="email">Email: </label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                <input type="email" class="form-control" id="email" required>
             </div>
             {{#if register}}
             <div class="form-group">
                 <label for="username">Username: </label>
-                <input type="text" class="form-control" id="username">
+                <input type="text" class="form-control" id="username" required>
             </div>
             {{/if}}
             <div class="form-group">
                 <label for="password">Password: </label>
-                <input type="password" class="form-control" id="password">
+                <input type="password" class="form-control" id="password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button id="submitbtn" type="submit" class="btn btn-primary">Submit</button>
             {{#if login}}
             <a class="ml-2 font-weight-bold" href="/user/register">Sign up</a>
             {{else}}
@@ -29,3 +29,11 @@
         </form>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+{{#if login}}
+<script src="/script/login.js"></script>
+{{/if}}
+{{#if register}}
+<script src="/script/register.js"></script>
+{{/if}}
