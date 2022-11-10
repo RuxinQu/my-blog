@@ -1,16 +1,22 @@
 const loginRouter = require('express').Router();
-const passport = require('../../util/passport');
+const passport = require('passport');
+
+const User = require('../../models/User');
+const chalk = require('chalk');
 
 loginRouter.get('/', (req, res) => {
     res.render('login');
 });
 
+// loginRouter.post('/', async (req, res) => {
+//     console.log(chalk.bgRed('ksksksks'));
+// });
 
-loginRouter.post('/login',
-    passport.authenticate('local', { failureRedirect: '/login' }),
-    (req, res) => {
-        res.redirect('/');
-    });
-
+loginRouter.post('/password', passport.authenticate('local', {
+    // successRedirect: '/',
+    successReturnToOrRedirect: '/dashboard',
+    failureRedirect: '/user/login',
+})
+);
 module.exports = loginRouter;
 

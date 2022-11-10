@@ -1,29 +1,38 @@
-/* eslint-disable no-undef */
 const passport = require('passport');
-const LocalStrategy = require('passport-local');
+const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/User');
 
-passport.use(new LocalStrategy(
-    function(email, password, done) {
-        User.findOne({ email: email }, function (err, user) {
-            if (err) { return done(err); }
-            if (!user) { return done(null, false); }
-            if (!user.checkPassword(password)) { return done(null, false); }
-            return done(null, user);
-        });
-    }
-));
+passport.use(
+    new LocalStrategy(
+        {
+            usernameField: 'email',
+            passwordField: 'password',
+        },
+        async (email, password, done) => {
+            try {
+                const user = await User.findOne({ where: { email: email } });
+                if (!user) {
+                    return done(null, false, {
+                        message: 'email not registered',
+                    });
+                }
+                const matchPassword = await user.checkPassword(password);
+                return matchPassword
+                    ? done(null, user)
+                    : done(null, false, { message: 'Incorrect password' });
+            } catch (error) {
+                done(error);
+            }
+        }
+    )
+);
 
-passport.serializeUser(function(user, cb) {
-    process.nextTick(function() {
-        cb(null, { id: user.id, username: user.username });
-    });
+passport.serializeUser(function (user, done) {
+    done(null, user.id);
 });
 
-passport.deserializeUser(function(user, cb) {
-    process.nextTick(function() {
-        return cb(null, user);
+passport.deserializeUser(function (id, done) {
+    User.findById(id, function (err, user) {
+        done(err, user);
     });
 });
-
-module.exports = passport;

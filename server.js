@@ -4,9 +4,9 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const passport = require('passport');
+const cookieParser = require('cookie-parser');
 
 const morgan = require('morgan');
-const bodyParser = require('body-parser');
 const errorHandler = require('errorhandler');
 
 const sequelize = require('./config/connection');
@@ -25,7 +25,7 @@ app.use(
         saveUninitialized: false,
         store: new SequelizeStore({
             db: sequelize,
-        }),
+        })
     })
 );
 
@@ -34,12 +34,23 @@ app.set('view engine', 'handlebars');
 
 app.use(passport.initialize());
 app.use(passport.session());
+require('./util/passport');
+
+app.use((req, res, next) => {
+    res.locals.user = req.user;
+    next();
+});
 
 app.use(errorHandler());
 app.use(morgan('dev'));
-app.use(bodyParser.json());
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
+
+
+app.use(passport.authenticate('session'));
+
 app.use(routes);
 
 const start = async () => {

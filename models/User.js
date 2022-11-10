@@ -59,6 +59,6 @@ User.init(
         timestamps: false,
         modelName: 'user',
     }
-)
+);
 
 module.exports = User;
