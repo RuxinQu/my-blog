@@ -12,17 +12,9 @@ homeRouter.get('/', async (req, res) => {
             include: { model: User }
         });
     const postArr = postData.map((post) => post.get({ plain: true }));
-    res.render('home', { postArr, login: req.session.login });
+    res.render('home', { postArr});
 });
 
-function ensureAuthentication(req, res, next) {
-    // Complete the if statmenet below:
-    if (req.session.authenticated) {
-        return next();
-    } else {
-        res.status(403).json({ msg: 'You\'re not authorized to view this page' });
-    }
-}
 
 
 module.exports = homeRouter;
