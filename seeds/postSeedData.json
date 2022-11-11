@@ -7,6 +7,21 @@
     {
         "title": "plants sale",
         "content": "we have some plants blablabla",
+        "user_id": 2
+    },
+    {
+        "title": "we have lots of girls clothes!",
+        "content": "girls clothes blablabla",
         "user_id": 3
+    },
+    {
+        "title": "extra dog supply",
+        "content": "we have some dog toys blablabla",
+        "user_id": 4
+    },
+    {
+        "title": "don't know what to sale",
+        "content": "yes blablablalablablabla",
+        "user_id": 5
     }
 ]
