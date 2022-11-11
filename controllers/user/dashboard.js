@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { isAuthenticated } = require('../../util/auth');
-const { Post, User, Comment } = require('../../models/index');
+const { Post, User} = require('../../models/index');
 
 router.get('/', isAuthenticated, async (req, res) => {
     try {
@@ -17,14 +17,5 @@ router.get('/', isAuthenticated, async (req, res) => {
         res.render('dashboard', { postArr, login: req.isAuthenticated() });
     } catch (err) { console.error(err); }
 });
-
-router.get('/edit/:id', isAuthenticated, async (req, res) => {
-    try {
-        const postData = await Post.findOne({ where: { id: req.params.id } });
-        const post = postData.get({ plain: true });
-        res.render('edit', { post, login: req.isAuthenticated() });
-    } catch (err) { console.error(err); }
-});
-
 
 module.exports = router;

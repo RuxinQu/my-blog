@@ -6,7 +6,7 @@
     {{#each postArr}}
     <div class="row d-flex justify-content-center">
         <div class="col-10 post rounded my-4">
-            <a class="title" href="/user/dashboard/edit/{{this.id}}">{{this.title}}</a><span class="owner">by
+            <a class="title" href="/api/post/edit/{{this.id}}">{{this.title}}</a><span class="owner">by
                 {{this.user.username}} on {{this.posttime}}</span>
             <p>{{this.content}}</p>
         </div>
