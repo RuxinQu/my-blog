@@ -1,14 +1,9 @@
-const userRouter = require('express').Router();
-const loginRouter = require('./login');
-const registerRouter = require('./register');
+const router = require('express').Router();
+const userRouter = require('./user');
+const dashboardRouter = require('./dashboard');
+
+router.use('/', userRouter);
+router.use('/dashboard',dashboardRouter);
 
 
-userRouter.use('/login', loginRouter);
-userRouter.use('/register', registerRouter);
-userRouter.post('/logout', async (req, res) => {
-    req.session.destroy(() => {
-        res.status(204).end();
-    });
-});
-
-module.exports = userRouter;
+module.exports = router;

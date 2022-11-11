@@ -1,0 +1,29 @@
+[
+    {
+        "content": "happy to see you all",
+        "user_id": 1,
+        "post_id": 3
+    },
+    {
+        
+        "content": "wanna go!",
+        "user_id": 2,
+        "post_id": 1
+    },
+    {
+        "content": "ccjcjcjcjjcblablabla",
+        "user_id": 3,
+        "post_id": 4
+
+    },
+    {
+        "content": "can't wait",
+        "user_id": 4,
+        "post_id": 5
+    },
+    {
+        "content": "blablablalablablabla",
+        "user_id": 5,
+        "post_id": 2
+    }
+]

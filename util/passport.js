@@ -27,12 +27,10 @@ passport.use(
     )
 );
 
-passport.serializeUser(function (user, done) {
+passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
 
-passport.deserializeUser(function (id, done) {
-    User.findById(id, function (err, user) {
-        done(err, user);
-    });
+passport.deserializeUser(function(id, done) {
+    User.findByPk(id).then(function(user) { done(null, user); });
 });
