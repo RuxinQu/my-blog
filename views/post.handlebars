@@ -1,0 +1,25 @@
+<div class="container-fluid mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-10 post rounded my-4">
+            <a class="title" href="/user/dashboard/{{post.id}}">{{post.title}}</a>
+            <span class="owner">by {{post.user.username}} on {{post.posttime}} </span>
+            <p>{{post.content}}</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="row d-flex justify-content-center">
+    <div class="col-10 rounded my-4">
+        <form action="/api/comment" method="post" class="comment-form p-3 mt-5 rounded">
+            <div class="form-group">
+                <label for="newcomment">Comment:</label>
+                <textarea name="newcomment" class="form-control" id="newcomment">Leave a comment...</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        {{#each post.comments as |comment|}}
+        <p class="comment rounded mt-5">{{comment.content}} --by {{comment.user_id}} on {{post.commenttime}}</p>
+        {{/each}}
+    </div>
+</div>
