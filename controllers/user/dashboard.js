@@ -8,9 +8,7 @@ router.get('/', isAuthenticated, async (req, res) => {
         const postData = await Post.findAll(
             {
                 where: { user_id: req.session.passport.user },
-                attributes: {
-                    include: [[sequelize.fn('date_format', sequelize.col('createdAt'), '%m-%d-%Y'), 'posttime']],
-                },
+                
                 include: { model: User }
             });
         const postArr = postData.map((post) => post.get({ plain: true }));

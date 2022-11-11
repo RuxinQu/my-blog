@@ -28,11 +28,16 @@ Comment.init(
                 model: 'post',
                 key: 'id'
             }
+        },
+        comment_time: {
+            type: DataTypes.DATEONLY,
+            defaultValue: DataTypes.NOW
         }
 
     },
     {
         sequelize,
+        timestamps: false,
         freezeTableName: true,
         modelName: 'comment',
     }
