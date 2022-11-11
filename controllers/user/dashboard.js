@@ -7,14 +7,29 @@ router.get('/', isAuthenticated, async (req, res) => {
     try {
         const postData = await Post.findAll(
             {
-                where: { id: req.session.passport.user },
+                where: { user_id: req.session.passport.user },
                 attributes: {
                     include: [[sequelize.fn('date_format', sequelize.col('createdAt'), '%m-%d-%Y'), 'posttime']],
                 },
                 include: { model: User }
             });
         const postArr = postData.map((post) => post.get({ plain: true }));
-        res.render('home', { postArr,login: req.isAuthenticated() });
+        res.render('home', { postArr, login: req.isAuthenticated() });
+    } catch (err) { console.error(err); }
+});
+
+router.get('/:id', isAuthenticated, async (req, res) => {
+    try {
+        const postData = await Post.findAll(
+            {
+                where: { user_id: req.session.passport.user },
+                attributes: {
+                    include: [[sequelize.fn('date_format', sequelize.col('createdAt'), '%m-%d-%Y'), 'posttime']],
+                },
+                include: { model: User }
+            });
+        const postArr = postData.map((post) => post.get({ plain: true }));
+        res.render('home', { postArr, login: req.isAuthenticated() });
     } catch (err) { console.error(err); }
 });
 

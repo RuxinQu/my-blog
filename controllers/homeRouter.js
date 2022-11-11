@@ -12,7 +12,7 @@ homeRouter.get('/', async (req, res) => {
             include: { model: User }
         });
     const postArr = postData.map((post) => post.get({ plain: true }));
-    res.render('home', { postArr});
+    res.render('home', { postArr, login: req.isAuthenticated() });
 });
 
 
