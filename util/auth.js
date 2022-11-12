@@ -6,10 +6,4 @@ const isAuthenticated = async(req, res, next) => {
     }
 };
 
-const destroySession = (req, res, next) => {
-    req.logOut();
-    req.session.destroy();
-    res.redirect('/');
-};
-
-module.exports = { isAuthenticated, destroySession };
+module.exports =  isAuthenticated;

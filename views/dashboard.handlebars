@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center mt-5">
-    <a href="/api/post" class="border border-primary p-2">+ NEW POST</a>
+    <a href="/api/post/newpost" class="border border-primary p-2">+ NEW POST</a>
 </div>
 
 <div class="container-fluid mt-5">
@@ -7,7 +7,7 @@
     <div class="row d-flex justify-content-center">
         <div class="col-10 post rounded my-4">
             <a class="title" href="/api/post/edit/{{this.id}}">{{this.title}}</a><span class="owner">by
-                {{this.user.username}} on {{this.posttime}}</span>
+                {{this.user.username}} on {{this.post_time}}</span>
             <p>{{this.content}}</p>
         </div>
     </div>
