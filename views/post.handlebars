@@ -11,10 +11,10 @@
 
 <div class="row d-flex justify-content-center">
     <div class="col-10 rounded my-4">
-        <form action="/api/comment" method="post" class="comment-form p-3 mt-5 rounded">
+        <form action="/api/comment/{{post.id}}" method="post" class="comment-form p-3 mt-5 rounded">
             <div class="form-group">
-                <label for="newcomment">Comment:</label>
-                <textarea name="newcomment" class="form-control" id="newcomment">Leave a comment...</textarea>
+                <label for="content">Comment:</label>
+                <textarea name="content" class="form-control" id="content" placeholder="Leave a comment..."></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
