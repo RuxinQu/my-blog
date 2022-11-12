@@ -11,7 +11,6 @@ $(document).ready(() => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ title, content })
         };
-        console.log(requestOption);
         try {
             const response = await fetch(`/api/post/${postId}`, requestOption);
             response.ok

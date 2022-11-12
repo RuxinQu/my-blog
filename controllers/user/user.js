@@ -20,16 +20,19 @@ router.get('/register', (req, res) => {
 });
 
 //when click on the submit button on signup page, a post request is sent to /register path
-//a new user is then created
-router.post('/register', async (req, res) => {
+//a new user is then created and automaticlly loged in
+router.post('/register', async (req, res, next) => {
     try {
-        const newUser = await User.create(req.body);
-        newUser
-            ? res.redirect('/user/login')
-            : res.status(400).send();
-    } catch (err) { res.status(500).json({ message: 'Failed to sign up' }); }
+        const newUserData = await User.create(req.body);
+        const newUser = newUserData.get({ plain: true });
+        req.login(newUser, err => {
+            if (err) { return next(err); }
+            res.redirect('/user/dashboard');
+        });
+    } catch (err) { console.error(err); }
 });
 
+//destroy the session and redirect to login page
 router.get('/logout', (req, res, next) => {
     req.logout((err) => {
         if (err) { return next(err); }
