@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { isAuthenticated } = require('../../util/auth');
+const isAuthenticated = require('../../util/auth');
 const { Post, User, Comment } = require('../../models/index');
 
 router.get('/:id', isAuthenticated, async (req, res) => {
@@ -16,10 +16,8 @@ router.get('/:id', isAuthenticated, async (req, res) => {
         });
         const post = postData.get({ plain: true });
         res.render('post', { post, login: req.isAuthenticated() });
-    } catch (err) { console.log(err); }
+    } catch (err) { console.error(err); }
 });
-
-
 
 router.get('/edit/:id', isAuthenticated, async (req, res) => {
     try {
@@ -29,5 +27,19 @@ router.get('/edit/:id', isAuthenticated, async (req, res) => {
     } catch (err) { console.error(err); }
 });
 
+router.put('/:id', isAuthenticated, async (req, res) => {
+    try {
+        const updatePost = await Post.update(req.body, {
+            where: { id: req.params.id }
+        });
+        res.status(201).send(updatePost);
+    } catch (err) { console.error(err); }
+});
 
+router.delete('/:id', isAuthenticated, async (req, res) => {
+    try {
+        await Post.destroy({ where: { id: req.params.id } });
+        res.status(204).send();
+    } catch (err) { console.error(err); }
+});
 module.exports = router;

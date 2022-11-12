@@ -33,7 +33,6 @@ Comment.init(
             type: DataTypes.DATEONLY,
             defaultValue: DataTypes.NOW
         }
-
     },
     {
         sequelize,
