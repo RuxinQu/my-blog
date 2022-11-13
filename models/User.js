@@ -7,7 +7,7 @@ class User extends Model {
         try {
             const matchPassword = await bcrypt.compare(password, this.password);
             return matchPassword;
-        } catch (err) { console.log(err); }
+        } catch (err) { console.error(err); }
     }
 }
 

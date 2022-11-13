@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
@@ -30,7 +29,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(
     session({
         secret: 'dahuang',
-        // cookie: { maxAge: 172800000, sameSite: 'none' },
+        cookie: { maxAge: 172800000, secure: false, httpOnly: true, sameSite: 'strict' },
         resave: false,
         saveUninitialized: false,
         store: new SequelizeStore({
