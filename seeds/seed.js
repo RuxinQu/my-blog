@@ -4,6 +4,7 @@ const userData = require('./userSeedData.json');
 const postData = require('./postSeedData.json');
 const commentData = require('./commentSeedData.json');
 
+//the await for post and comment are necessary otherwise the data the foreign key refers to may not be implemented yet
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
     await User.bulkCreate(userData, { individualHooks: true });

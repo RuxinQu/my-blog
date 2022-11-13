@@ -2,8 +2,10 @@ const router = require('express').Router();
 const isAuthenticated = require('../../util/auth');
 const { Comment } = require('../../models/index');
 
+// passport has deserialized userdata to req.user, access the user.id and get the post id from the req.param
+// the request is sent from the button on views/post.handlebar
 router.post('/:id', isAuthenticated, async (req, res) => {
-    const user_id = req.session.passport.user;
+    const user_id = req.user.id;
     const post_id = req.params.id;
     const { content } = req.body;
     try {

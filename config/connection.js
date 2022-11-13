@@ -14,7 +14,7 @@ if (process.env.JAWSDB_URL) {
             host: process.env.HOST,
             dialect: 'mysql'
         }
-    )
+    );
 }
 
 module.exports = sequelize;

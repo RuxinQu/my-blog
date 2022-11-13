@@ -18,20 +18,20 @@
     "start": "node server.js",
     "seed": "node seeds/seed.js"
   },
-  "name": "yard-bazaar",
+  "name": "my-blog",
   "version": "1.0.0",
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RuxinQu/yard-bazaar.git"
+    "url": "git+https://github.com/RuxinQu/my-blog.git"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/RuxinQu/yard-bazaar/issues"
+    "url": "https://github.com/RuxinQu/my-blog/issues"
   },
-  "homepage": "https://github.com/RuxinQu/yard-bazaar#readme",
+  "homepage": "https://github.com/RuxinQu/my-blog#readme",
   "description": "",
   "devDependencies": {
     "eslint": "^8.27.0"
