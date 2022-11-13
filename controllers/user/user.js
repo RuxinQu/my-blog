@@ -23,17 +23,15 @@ router.get('/register', (req, res) => {
 //a new user is then created and automaticlly loged in
 router.post('/register', async (req, res, next) => {
     try {
-        const account = await User.findOne({where: {email: req.body.email}});
-        if(account){
-            return res.status(400).send('Failed to create a new account, email already exists!');
-        }
         const newUserData = await User.create(req.body);
         const newUser = newUserData.get({ plain: true });
         req.login(newUser, err => {
             if (err) { return next(err); }
             res.redirect('/user/dashboard');
         });
-    } catch (err) { console.error(err); }
+    } catch (err) {
+        res.status(400).send(err.errors.map(e => e.message));
+    }
 });
 
 //destroy the session and redirect to login page
@@ -44,7 +42,6 @@ router.get('/logout', (req, res, next) => {
         res.redirect('/user/login');
     });
 });
-
 
 module.exports = router;
 

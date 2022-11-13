@@ -12,7 +12,9 @@ router.get('/', isAuthenticated, async (req, res) => {
             });
         const postArr = postData.map((post) => post.get({ plain: true }));
         res.render('dashboard', { postArr, login: req.isAuthenticated() });
-    } catch (err) { console.error(err); }
+    } catch (err) {
+        res.status(400).send(err.errors.map(e => e.message));
+    }
 });
 
 module.exports = router;
