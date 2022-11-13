@@ -1,5 +1,5 @@
-/* eslint-disable no-undef */
 $(document).ready(() => {
+    // get the postId from the current url
     const postId = window.location.href.split('/').pop();
 
     const handleUpdate = async (event) => {
