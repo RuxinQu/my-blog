@@ -15,8 +15,7 @@ router.post('/:id', isAuthenticated, async (req, res) => {
             post_id
         });
         res.status(201).redirect(`/api/post/${post_id}`);
-    } catch (err) { console.error(err); }
-
+    } catch (err) { res.status(400).send('Failed to create new comment'); }
 });
 
 module.exports = router;
