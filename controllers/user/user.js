@@ -23,6 +23,10 @@ router.get('/register', (req, res) => {
 //a new user is then created and automaticlly loged in
 router.post('/register', async (req, res, next) => {
     try {
+        const account = await User.findOne({where: {email: req.body.email}});
+        if(account){
+            return res.status(400).send('Failed to create a new account, email already exists!');
+        }
         const newUserData = await User.create(req.body);
         const newUser = newUserData.get({ plain: true });
         req.login(newUser, err => {

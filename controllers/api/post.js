@@ -22,16 +22,22 @@ router.get('/:id', isAuthenticated, async (req, res) => {
                     include: [User]
                 }]
         });
+        if (!postData) {
+            return res.status(404).send('404 not found');
+        }
         const post = postData.get({ plain: true });
         res.render('post', { post, login: req.isAuthenticated() });
     } catch (err) { console.error(err); }
 });
 
-//return the edit page with the original title and content as default value
+//return the edit page with the original title and content as default value, add authorization check, can't edit the post belongs to others
 router.get('/edit/:id', isAuthenticated, async (req, res) => {
     try {
         const postData = await Post.findOne({ where: { id: req.params.id } });
         const post = postData.get({ plain: true });
+        if (post.user_id !== req.user.id) {
+            return res.status(400).send('lack of permisstion');
+        }
         res.render('edit', { post, login: req.isAuthenticated() });
     } catch (err) { console.error(err); }
 });
