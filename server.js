@@ -5,7 +5,6 @@ const routes = require('./controllers');
 const passport = require('passport');
 require('./util/passport');
 
-const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const errorHandler = require('errorhandler');
 
@@ -24,12 +23,11 @@ app.use(errorHandler());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
 app.use(
     session({
         secret: 'dahuang',
-        cookie: { maxAge: 172800000, secure: false, httpOnly: true, sameSite: 'strict' },
+        cookie: { maxAge: 172800000, secure: false, sameSite: 'strict' },
         resave: false,
         saveUninitialized: false,
         store: new SequelizeStore({
