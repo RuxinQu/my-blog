@@ -37,6 +37,7 @@ DB_PW='database_password'
 ```
 
 ## Usage
+* View the demo video of the website: [**HERE**](https://drive.google.com/file/d/1SW0fx8QfAWdwdcp7pRpZk3NpOZ8aMSVg/view)
 1. Open the website then users can see all the existing posts at Home page.
 2. After signup/login, users can see their previous posts at Dashboard page.
 3. Click on the post title on dashboard page, user can *update* or *delete* their post.
