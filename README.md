@@ -1,11 +1,11 @@
 # My Blog
 
-![Express](https://img.shields.io/badge/-Express-blue.svg)
+![Express](https://img.shields.io/badge/-Express-black.svg)
 ![Passport-Local](https://img.shields.io/badge/Passport-Local-green.svg)
 ![Bcrypt](https://img.shields.io/badge/-Bcrypt-darkblue.svg)
-![Mysql](https://img.shields.io/badge/-MySQL-darkgreen.svg)
+![Mysql](https://img.shields.io/badge/-MySQL-blue.svg)
 ![Sequelize](https://img.shields.io/badge/-Sequelize-blue.svg) 
-![Handlebars](https://img.shields.io/badge/-Handlebars-ff69b4.svg)
+![Handlebars](https://img.shields.io/badge/-Handlebars-orange.svg)
 ![Dotenv](https://img.shields.io/badge/-Dotenv-lightblue.svg)
 ![Heroku](https://img.shields.io/badge/-Heroku-purple.svg)
 ![MIT license](https://img.shields.io/badge/License-MIT-green.svg)
