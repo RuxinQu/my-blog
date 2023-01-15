@@ -1,13 +1,14 @@
 # My Blog
 
-![Express](https://img.shields.io/badge/-Express-black.svg)
+![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![Mysql](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white)
+![Handlebars](https://img.shields.io/badge/Handlebars.js-f0772b?style=for-the-badge&logo=handlebarsdotjs&logoColor=black)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+![Heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
 ![Passport-Local](https://img.shields.io/badge/Passport-Local-green.svg)
 ![Bcrypt](https://img.shields.io/badge/-Bcrypt-darkblue.svg)
-![Mysql](https://img.shields.io/badge/-MySQL-blue.svg)
-![Sequelize](https://img.shields.io/badge/-Sequelize-blue.svg) 
-![Handlebars](https://img.shields.io/badge/-Handlebars-orange.svg)
 ![Dotenv](https://img.shields.io/badge/-Dotenv-lightblue.svg)
-![Heroku](https://img.shields.io/badge/-Heroku-purple.svg)
 ![MIT license](https://img.shields.io/badge/License-MIT-green.svg)
 ![badge](https://img.shields.io/github/languages/top/ruxinqu/my-blog)
 
